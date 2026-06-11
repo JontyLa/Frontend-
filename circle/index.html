@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Intersection of two circles</title>
+
+    
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id = "tops">
+    <h1>Intersection checker</h1>
+    <h4>Click anywhere to draw a circle of random radius</h4>
+    <p id="result">Result will be displayed here</p>
+    </div>
+
+    <script>
+        
+        var board = document.getElementById("board");
+        var array = [];
+        var radii = [];
+        var center = [];
+        document.addEventListener("click", (prajwalEvent) => {
+            const radius = 50 + Math.floor(((Math.random()) * 200));
+            radii.push(radius);
+            const xVal = prajwalEvent.x;
+            const yVal = prajwalEvent.y;
+            center.push([xVal, yVal]);
+            console.log(center);
+
+            createCircle(xVal, yVal, radius);
+            if (array.length ==3){
+                    
+                for (let i = 0 ; i<2 ; i++) {
+                    elem = array[i];
+                    elem.remove();
+                    
+
+                    
+                }
+            array.shift();
+            array.shift();
+
+            center.shift();
+            center.shift();
+
+            radii.shift();
+            radii.shift();
+            }
+            if (array.length == 2) {
+
+                const r1 = Math.min(radii[0], radii[1]);
+                const r2 = Math.max(radii[0], radii[1]);
+                var d = (Math.hypot(center[1][0] - center[0][0], center[1][1] - center[0][1]));
+                console.log(center[0]);
+                console.log(center[1]);
+                console.log(d);
+                if ((r1 + r2 < d) || (d + r1 <= r2)) {
+                    document.getElementById("result").innerHTML = "Not Intersecting";
+                }
+                else {
+                    document.getElementById("result").innerHTML = "Intersecting";
+                }
+
+
+            }
+
+
+
+
+        })
+
+
+        function createCircle(x, y, radius) {
+            const circle = document.createElement("div");
+            array.push(circle);
+            circle.classList.add("circles");
+            circle.style.position = "absolute";
+            circle.style.height = 2 * radius + "px";
+            circle.style.width = 2 * radius + "px";
+
+
+            circle.style.left = (x - radius) + "px";
+            circle.style.top = (y - radius) + "px";
+
+            document.body.appendChild(circle);
+
+        }
+
+
+
+    </script>
+</body>

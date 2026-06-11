@@ -1,0 +1,40 @@
+*{
+  font-family: monospace;
+  color: white;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body{
+  background-color: #111;
+  height: 100%;
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  
+}
+
+.circles{
+  border-radius: 50%;
+  border: 2px solid cyan;
+
+
+}
+
+#tops{
+  
+  z-index: 1;
+  background-color: #333;
+  padding: 8px;
+  border: 2px solid yellow;
+  height: 215px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 30vw;
+  gap: 2px;
+  
+  margin: 15px 20px;
+}
+
